@@ -1,5 +1,5 @@
-import { Button } from "components";
 import React, { useRef } from "react";
+import { Button } from "components";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "redux/actions/authAction";
@@ -38,7 +38,9 @@ const NavUser = ({ avatar }) => {
 
         <ul className="nav_user_list" ref={contentRef}>
           <li className="nav_user_list_item">
-            <Link className="nav_user_list_link">Профиль</Link>
+            <Link to="/" className="nav_user_list_link">
+              Профиль
+            </Link>
           </li>
           <li className="nav_user_list_item" onClick={handleLogout}>
             <div className="nav_user_list_link">Выйти</div>

@@ -10,3 +10,6 @@ export { default as Heading } from "./Heading/Heading";
 export { default as Loading } from "./Loading/Loading";
 
 export { default as ArticleCard } from "./Cards/ArticleCard/ArticleCard";
+export { default as DetailCard } from "./Cards/DetailCard/DetailCard";
+
+export { default as FavoriteBtn } from "./FavoriteBtn/FavoriteBtn";

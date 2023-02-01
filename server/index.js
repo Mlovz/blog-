@@ -6,14 +6,6 @@ import cors from "cors";
 import mongoose from "mongoose";
 import routes from "./routes";
 const app = express();
-// const SocketServer = require("./socketServer.js");
-
-// const http = require("http").createServer(app);
-// const io = require("socket.io")(http);
-
-// io.on("connection", (socket) => {
-//   SocketServer(socket);
-// });
 
 //middleware
 if (process.env.NODE_ENV === "development") {

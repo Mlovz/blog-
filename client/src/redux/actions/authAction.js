@@ -11,8 +11,10 @@ export const register = (userData, navigate) => async (dispatch) => {
     if (res.data) {
       navigate("/login");
     }
+
+    dispatch({ type: ALERT, payload: { loading: false } });
   } catch (err) {
-    console.log(err);
+    dispatch({ type: ALERT, payload: { loading: false } });
   }
 };
 
@@ -35,7 +37,6 @@ export const login = (userData) => async (dispatch) => {
     }
     dispatch({ type: ALERT, payload: { loading: false } });
   } catch (err) {
-    console.log(err);
     dispatch({ type: ALERT, payload: { loading: false } });
   }
 };
@@ -60,8 +61,6 @@ export const getUser = () => async (dispatch) => {
         });
         localStorage.setItem("token", data.access_token);
       }
-
-      console.log(data);
 
       dispatch({ type: ALERT, payload: { loading: false } });
     } catch (err) {
@@ -88,6 +87,7 @@ export const logout = () => async (dispatch) => {
       });
 
       localStorage.removeItem("token");
+      window.location.href = "/login";
     }
     dispatch({ type: ALERT, payload: { loading: false } });
   } catch (err) {

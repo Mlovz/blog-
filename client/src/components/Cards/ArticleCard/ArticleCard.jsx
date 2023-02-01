@@ -1,17 +1,28 @@
 import { Heading } from "components";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { sliceText } from "utils/sliceText";
 import "./article-card.scss";
 
-const ArticleCard = ({ id, title, content, createdAt }) => {
+const ArticleCard = ({ id, title, content, createdAt, scrollTop }) => {
+  const navigate = useNavigate();
+
+  const onScrollTop = () => {
+    if (scrollTop) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+
+    navigate(`/article/${id}`);
+  };
+
   return (
-    <Link to={`/article/${id}`} className="article-card">
-      <Heading type="pink">Многие думают, что Lorem Ipsum</Heading>
-      <span className="fs-12">17 декабря 2022 г.</span>
-      <p className="fs-16">
-        Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
-        Вирджиния, взял одно из самых странных слов в Lorem Ipsum
-      </p>
+    <div className="article-card" onClick={onScrollTop}>
+      <Heading type="pink">{sliceText(title, 30)}</Heading>
+      <span className="fs-12">{createdAt}</span>
+      <p className="fs-16">{sliceText(content, 100)}</p>
 
       <svg
         width="20"
@@ -25,7 +36,7 @@ const ArticleCard = ({ id, title, content, createdAt }) => {
           fill="black"
         />
       </svg>
-    </Link>
+    </div>
   );
 };
 
